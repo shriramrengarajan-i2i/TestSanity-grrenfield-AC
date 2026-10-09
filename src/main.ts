@@ -2,10 +2,12 @@ import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { AppConfig } from './config/configuration';
+import { AppConfig, resolveLogLevels } from './config/configuration';
 
 async function bootstrap(): Promise<void> {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: resolveLogLevels(process.env.LOG_LEVEL ?? 'log'),
+  });
   const configService = app.get(ConfigService<AppConfig, true>);
   const logger = new Logger('Bootstrap');
 

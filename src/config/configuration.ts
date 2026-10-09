@@ -1,7 +1,20 @@
+import { LogLevel } from '@nestjs/common';
+
 export interface AppConfig {
   port: number;
   environment: string;
   logLevel: string;
+}
+
+const LOG_LEVEL_HIERARCHY: LogLevel[] = ['verbose', 'debug', 'log', 'warn', 'error', 'fatal'];
+
+export function resolveLogLevels(logLevel: string): LogLevel[] {
+  const index = LOG_LEVEL_HIERARCHY.indexOf(logLevel as LogLevel);
+  if (index === -1) {
+    return LOG_LEVEL_HIERARCHY.slice(LOG_LEVEL_HIERARCHY.indexOf('log'));
+  }
+
+  return LOG_LEVEL_HIERARCHY.slice(index);
 }
 
 function parsePort(rawPort: string | undefined): number {
