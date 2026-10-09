@@ -15,7 +15,10 @@
     "lint": "eslint \"{src,test}/**/*.ts\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:check": "bash scripts/db/check-connection.sh"
   },
   "dependencies": {
     "@nestjs/common": "^10.4.15",
