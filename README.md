@@ -5,6 +5,12 @@ unauthenticated health endpoint. A local PostgreSQL datastore is provisioned via
 Docker Compose, but no ORM, migrations, or application database-access code are
 included yet — see later scaffolding work for those.
 
+## Web client
+
+A React + TypeScript single-page application lives at
+[`client/`](client/README.md), independent of this backend's packaging. See
+its README for setup and configuration.
+
 ## Requirements
 
 - Node.js >= 20
