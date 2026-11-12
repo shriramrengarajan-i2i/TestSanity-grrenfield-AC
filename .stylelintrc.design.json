@@ -1,0 +1,20 @@
+{
+  "ignoreFiles": [
+    "web/src/app/globals.css",
+    "web/src/styles/design-tokens.css"
+  ],
+  "rules": {
+    "color-no-hex": true,
+    "function-disallowed-list": [
+      "rgb",
+      "rgba",
+      "hsl",
+      "hsla"
+    ],
+    "declaration-property-value-disallowed-list": {
+      "font-family": [
+        "/^(?!var\\()/"
+      ]
+    }
+  }
+}
